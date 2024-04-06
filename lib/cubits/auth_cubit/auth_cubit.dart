@@ -44,11 +44,17 @@ class AuthCubit extends Cubit<UserState> {
                     context, '/Home', (route) => false);
               }
             } else {
+              customizedFlushBar(
+                        titleText: 'Error', contentText: 'Please try again later')
+                    .show(context);
               emit(LoginFailed());
             }
           });
     } catch (e) {
       print("error from userLogin:$e");
+      customizedFlushBar(
+                        titleText: 'Error', contentText: 'Please try again later')
+                    .show(context);
       emit(LoginFailed());
     }
   }
